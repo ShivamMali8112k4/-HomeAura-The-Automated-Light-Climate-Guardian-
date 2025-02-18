@@ -1,46 +1,50 @@
-# 🌟 Smart Room Automation System 🏠
+# Smart Room Automation System 🏠✨
 
-This project is a simple **Smart Room Automation System** that controls a light 💡 and a fan 🌬 based on various conditions like proximity, temperature 🌡, and ambient light 🌞. It uses a combination of sensors and an LCD display to give feedback on the status.
+## Overview 📚
+This **Smart Room Automation System** uses an **IR sensor**, **LDR (Light Dependent Resistor)**, and **DHT11 temperature sensor** to manage a **light** and **fan**. The system adjusts to the environment by detecting motion, ambient light, and temperature.
 
-## 🛠 Components Used:
-- **DHT11**: Temperature and humidity sensor 🌡💧
-- **HC-SR04** (optional): Proximity sensor (in case you want to include it)
-- **LDR**: Light-dependent resistor to measure ambient light
-- **Fan**: Controlled via a relay or transistor to turn on/off based on temperature
-- **LED**: Controlled to turn on/off based on proximity and light conditions 
-- **LCD**: 16x2 LCD with I2C for displaying temperature and status 📺
-- **Arduino**: Microcontroller to handle all sensor readings and control the outputs 🖥
+### Features ⚙️:
+- **Motion Detection** using an **IR sensor** 👀
+- **Light Control** based on **ambient light** 🌞 (including **PWM dimming** for smooth light adjustment)
+- **Fan Control** based on **temperature** 🌡️ (multiple fan speeds)
+- **LCD Display** showing **temperature** and "Welcome Back" message when motion is detected 💻
 
-## 💡 Features:
-- **Proximity-based Light Control**: The light will automatically turn on when someone is detected nearby (via a proximity sensor) and the ambient light level is low. 🔦
-- **Temperature-based Fan Control**: If the temperature exceeds a threshold (30°C), the fan will turn on.
-- **LCD Display**: The LCD will show a greeting message when someone is detected and will display the current temperature. 📺
-- **Serial Monitor Output**: Data about the light level, temperature, and proximity detection is printed to the serial monitor for debugging purposes.
+## Components Required 🔧:
+- **IR Sensor** 👀
+- **LDR (Light Dependent Resistor)** 🌞
+- **DHT11 Temperature Sensor** 🌡️
+- **16x2 I2C LCD Display** 💻
+- **Fan** 🌀
+- **Light** 💡
+- **Arduino Board** 🖥️
 
-## 🔌 Wiring:
-- **DHT11**: Connect to pin `2` for temperature readings 
-- **LDR**: Connect to analog pin `A0` for light level sensing 
-- **Proximity Sensor**: Connect to pin `7` to detect motion or presence 
-- **Fan**: Connect to pin `8` to control fan operation 
-- **Light**: Connect to pin `9` to control the light 
+## Circuit Diagram 🔌:
+1. **IR Sensor** 👀 connected to **Pin 7**.
+2. **LDR** 🌞 connected to **Analog Pin A0**.
+3. **DHT11** 🌡️ connected to **Pin 2**.
+4. **Fan** 🌀 connected to **Pin 8**.
+5. **Light** 💡 connected to **Pin 9**.
 
-## 📜 Code Walkthrough:
-1. **Libraries**:
-   - `DHT.h`: For interacting with the DHT11 temperature sensor 🌡
-   - `Wire.h` and `LiquidCrystal_I2C.h`: For communicating with the LCD display over I2C 📺
+## Code Explanation 💡:
+- **Light Control**: The LDR controls the light, dimming or turning it on based on ambient light.
+- **Fan Control**: The fan adjusts its speed based on temperature.
+- **IR Sensor**: When motion is detected, the system displays a welcome message and temperature on the LCD.
+  
+---
 
-2. **Pin Definitions**:
-   - Defines the pins for the temperature sensor, light, fan, and proximity sensor.
-   
-3. **Thresholds**:
-   - The temperature threshold is set to 30°C 🌡 for fan control.
-   - The light threshold is set to 200 for ambient light levels.
-   - The proximity threshold is set to detect motion based on the sensor input.
+### **How It Works** 🌟:
 
-4. **LCD Setup**:
-   - LCD initialized to show "Welcome Back" when proximity is detected and will display the current temperature 🌡.
-   
-5. **Control Logic**:
-   - If the proximity sensor detects motion and the ambient light is low, the light turns on.
-   - If the temperature exceeds the threshold, the fan turns on.
-   - Data is also printed to the serial monitor for debugging 🖥.
+- **Motion Detection**: When the **IR sensor** detects motion, the system:
+  1. Turns on the light if it's dark enough.
+  2. Displays the **"Welcome Back"** message and the current **temperature** on the LCD.
+
+- **Fan Control**: The fan speed is adjusted based on the temperature:
+  - Above **30°C**, the fan runs at full speed.
+  - Between **25°C** and **30°C**, the fan runs at medium speed.
+  - Below **25°C**, the fan is off.
+
+- **Light Control**: The light is dimmed based on the **LDR** reading:
+  - If the room is dark, the light turns on at full brightness.
+  - If it's bright, the light intensity is adjusted proportionally.
+
+
