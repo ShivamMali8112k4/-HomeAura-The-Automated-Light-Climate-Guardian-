@@ -25,6 +25,8 @@ This **Smart Room Automation System** uses an **IR sensor**, **LDR (Light Depend
 4. **Fan** 🌀 connected to **Pin 8**.
 5. **Light** 💡 connected to **Pin 9**.
 
+![image alt](https://github.com/ShivamMali8112k4/img/blob/c5f53badc280e2eb9514871f2bf42eef9c2d1fcd/circuit_image%20(1).png)
+
 ## Code Explanation 💡:
 - **Light Control**: The LDR controls the light, dimming or turning it on based on ambient light.
 - **Fan Control**: The fan adjusts its speed based on temperature.
